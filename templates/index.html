@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{%block title%}
+    {{ super() }}
+{%endblock%}
+
+{%block content%}
+    <h1>TENEMOS SISMO...</h1>
+    <p>textos varios mi ip es {{user_ip}} </p>
+    
+    <ul>
+        {% for item in items %}
+        <li> {{macros.render_items(item)}} </li>
+        {% endfor %}
+    </ul>
+{%endblock%} 
