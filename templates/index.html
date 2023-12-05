@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macros %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {%block title%}
     {{ super() }}
 {%endblock%}
 
 {%block content%}
+
+    {% if username %}
+    <p>Bienvenido a la session ... {{username}}</p>
+    {% endif %}
+
     <h1>TENEMOS SISMO...</h1>
-    <p>textos varios mi ip es {{user_ip}} </p>
+    <p>textos varios mi ip es {{user_ip}} </p><br>
+        <div class="container">
+            {{wtf.quick_form(login_form)}}
+        </div>
     
     <ul>
         {% for item in items %}
