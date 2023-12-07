@@ -1,7 +1,7 @@
 from flask import Flask, request, make_response, redirect, render_template, session
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField 
+from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 
 
@@ -40,4 +40,5 @@ def show_information():
         return make_response(redirect("/index"))
     return render_template("index.html", **context)
 
-app.run(host='127.0.0.5', port=8888, debug=True)
+if __name__ == "__main__":
+    app.run(host='127.0.0.5', port=8888, debug=True)
