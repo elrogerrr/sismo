@@ -1,20 +1,16 @@
-from flask import Flask, request, make_response, redirect, render_template, session
-from flask_bootstrap import Bootstrap
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired
+from flask import Flask, request, make_response, redirect, render_template, session, url_for, flash
+import unittest
+from app import create_app
+from app.forms import LoginForm 
 
-
-app = Flask(__name__)
-bootstrap = Bootstrap(app)
-app.config["SECRET_KEY"]='clavesegura=)(/&%$#"!"#$%&/()=0987654321234567890)'
+app = create_app()
 
 items=["item1","item2","item3","item4","item5","item6","item7"]
 
-class LoginForm(FlaskForm):
-    username = StringField("Nombre de usuario", validators=[DataRequired()])
-    password = PasswordField("Contraseña", validators=[DataRequired()])
-    submit = SubmitField("Enviar contraseña")
+@app.cli.command()
+def test():
+    tests=unittest.TestLoader().discover("tests")
+    unittest.TextTestRunner().run(tests)
 
 @app.route('/index')
 def index():
@@ -37,7 +33,8 @@ def show_information():
     if login_form.validate_on_submit():
         username=login_form.username.data
         session["username"] = username
-        return make_response(redirect("/index"))
+        flash("nombre registrado y correcto")
+        return redirect(url_for("index"))
     return render_template("index.html", **context)
 
 if __name__ == "__main__":

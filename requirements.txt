@@ -52,6 +52,7 @@ filelock==3.9.0
 flake8==5.0.4
 Flask==2.2.2
 Flask-Bootstrap==3.3.7.1
+Flask-Testing==0.8.1
 Flask-WTF==1.2.1
 fonttools==4.38.0
 fs==2.4.16
