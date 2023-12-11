@@ -24,3 +24,5 @@ class MaintTest(TestCase):
     def test_auth_blueprint_login_template(self):
         self.client.get(url_for("auth.login"))
         self.assertTemplateUsed("login.html")
+        self.ass
+

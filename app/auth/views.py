@@ -2,7 +2,7 @@ from . import auth
 from app.forms import LoginForm
 from flask import render_template
 
-@auth.route('/login')
+@auth.route('/login', methods=["GET","POST"])
 def login():
     context={
         "login_form":LoginForm()
